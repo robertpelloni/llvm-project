@@ -2,8 +2,8 @@
 #include "llvm/MC/TargetRegistry.h"
 #include "llvm/CodeGen/TargetPassConfig.h"
 #include "llvm/Target/TargetLoweringObjectFile.h"
-#include "llvm/CodeGen/TargetLoweringObjectFileImpl.h"
 #include "TargetInfo/JVMTargetInfo.h"
+#include "llvm/CodeGen/TargetLoweringObjectFileImpl.h"
 
 using namespace llvm;
 
