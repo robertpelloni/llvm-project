@@ -138,6 +138,8 @@ StringRef Triple::getArchTypeName(ArchType Kind) {
     return "thumbeb";
   case ve:
     return "ve";
+  case jvm:
+    return "jvm";
   case wasm32:
     return "wasm32";
   case wasm64:
@@ -339,6 +341,8 @@ StringRef Triple::getArchTypePrefix(ArchType Kind) {
 
   case ve:
     return "ve";
+  case jvm:
+    return "jvm";
   case csky:
     return "csky";
 
@@ -716,6 +720,7 @@ Triple::ArchType Triple::getArchTypeForLLVMName(StringRef Name) {
       .Case("kalimba", kalimba)
       .Case("lanai", lanai)
       .Case("shave", shave)
+      .Case("jvm", jvm)
       .Case("wasm32", wasm32)
       .Case("wasm64", wasm64)
       .Case("renderscript32", renderscript32)
@@ -869,6 +874,7 @@ Triple::ArchType Triple::parseArch(StringRef ArchName) {
           .Case("renderscript64", Triple::renderscript64)
           .Case("shave", Triple::shave)
           .Case("ve", Triple::ve)
+          .Case("jvm", Triple::jvm)
           .Case("wasm32", Triple::wasm32)
           .Case("wasm64", Triple::wasm64)
           .Case("csky", Triple::csky)
@@ -1262,6 +1268,8 @@ static Triple::ObjectFormatType getDefaultFormat(const Triple &T) {
       return Triple::GOFF;
     return Triple::ELF;
 
+  case Triple::jvm:
+    return Triple::UnknownObjectFormat;
   case Triple::wasm32:
   case Triple::wasm64:
     return Triple::Wasm;
@@ -2004,6 +2012,7 @@ unsigned Triple::getArchPointerBitWidth(llvm::Triple::ArchType Arch) {
   case llvm::Triple::tcele:
   case llvm::Triple::thumb:
   case llvm::Triple::thumbeb:
+  case llvm::Triple::jvm:
   case llvm::Triple::wasm32:
   case llvm::Triple::x86:
   case llvm::Triple::xcore:
@@ -2115,6 +2124,7 @@ Triple Triple::get32BitArchVariant() const {
   case Triple::tcele:
   case Triple::thumb:
   case Triple::thumbeb:
+  case Triple::jvm:
   case Triple::wasm32:
   case Triple::x86:
   case Triple::xcore:
@@ -2293,6 +2303,8 @@ Triple Triple::get64BitArchVariant() const {
     break;
   case Triple::thumbeb:
     T.setArch(Triple::aarch64_be);
+    break;
+  case Triple::jvm:
     break;
   case Triple::wasm32:
     T.setArch(Triple::wasm64);
