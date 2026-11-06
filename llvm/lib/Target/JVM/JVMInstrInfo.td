@@ -64,3 +64,49 @@ let isReturn = 1, isTerminator = 1, isBarrier = 1 in {
     let Opcode = 0xB1;
   }
 }
+
+//===----------------------------------------------------------------------===//
+// Instructions: Local Variable Loads and Stores
+//===----------------------------------------------------------------------===//
+
+def ILOAD : JVMInst<(outs I32Regs:$dst), (ins i32imm:$idx),
+                    "iload $idx", []> {
+  let Opcode = 0x15;
+}
+
+def ISTORE : JVMInst<(outs), (ins I32Regs:$val, i32imm:$idx),
+                     "istore $idx", []> {
+  let Opcode = 0x36;
+}
+
+def ALOAD : JVMInst<(outs I32Regs:$dst), (ins i32imm:$idx),
+                    "aload $idx", []> {
+  let Opcode = 0x19;
+}
+
+def ASTORE : JVMInst<(outs), (ins I32Regs:$val, i32imm:$idx),
+                     "astore $idx", []> {
+  let Opcode = 0x3A;
+}
+
+//===----------------------------------------------------------------------===//
+// Instructions: Branching and Comparisons
+//===----------------------------------------------------------------------===//
+
+let isBranch = 1, isTerminator = 1 in {
+  def IFEQ : JVMInst<(outs), (ins I32Regs:$cond, brtarget:$target),
+                     "ifeq $target", []> {
+    let Opcode = 0x99;
+  }
+
+  def IFNE : JVMInst<(outs), (ins I32Regs:$cond, brtarget:$target),
+                     "ifne $target", []> {
+    let Opcode = 0x9A;
+  }
+
+  def GOTO : JVMInst<(outs), (ins brtarget:$target),
+                     "goto $target", []> {
+    let Opcode = 0xA7;
+    let isBarrier = 1;
+  }
+}
