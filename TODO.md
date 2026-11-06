@@ -1,7 +1,7 @@
 # LLVM JVM Target Backend: Immediate Tasks & Fixes
 
 ## Immediate Tasks
-- [ ] Add TableGen target description files (`JVM.td`, `JVMRegisterInfo.td`, `JVMInstrInfo.td`).
+- [x] Add TableGen target description files (`JVM.td`, `JVMRegisterInfo.td`, `JVMInstrInfo.td`).
 - [ ] Implement `JVMAsmPrinter` to support JVM assembly text dumping (Jasmin or Krakatau compatible format) for debugging.
 - [ ] Implement `JVMTargetLowering::LowerFormalArguments` and `JVMTargetLowering::LowerReturn` for basic integer returns.
 - [ ] Add unittests in `llvm/unittests/Target/JVM` or lit tests in `llvm/test/CodeGen/JVM/` checking basic arithmetic emission.

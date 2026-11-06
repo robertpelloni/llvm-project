@@ -3,6 +3,15 @@
 All notable changes to this project are documented in this file.
 The version format corresponds to `VERSION.md`.
 
+## [0.1.0-alpha.2] - 2026-06-22
+
+### Added
+- Created LLVM TableGen definition files for JVM backend target:
+  - `llvm/lib/Target/JVM/JVMRegisterInfo.td`: Virtual registers (`R0`-`R3`, `L0`-`L1`, `F0`, `D0`) and register classes (`I32Regs`, `I64Regs`, `F32Regs`, `F64Regs`).
+  - `llvm/lib/Target/JVM/JVMInstrInfo.td`: JVM bytecode instructions (`IADD`, `ISUB`, `IMUL`, `IDIV`, `IRETURN`, `RETURN`) with opcode definitions.
+  - `llvm/lib/Target/JVM/JVM.td`: Master target description including subtarget features (`FeatureJava21`, `FeaturePanama`, `FeatureUnsafe`) and processor definitions (`generic`, `jvm21`).
+- Updated `llvm/lib/Target/JVM/CMakeLists.txt` to trigger `tablegen` for `JVMGenSubtargetInfo.inc`, `JVMGenRegisterInfo.inc`, and `JVMGenInstrInfo.inc`, and export public TableGen target `JVMCommonTableGen`.
+
 ## [0.1.0-alpha.1] - 2026-06-22
 
 ### Added
