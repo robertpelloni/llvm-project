@@ -9,12 +9,14 @@ tablegen(LLVM JVMGenInstrInfo.inc -gen-instr-info)
 add_public_tablegen_target(JVMCommonTableGen)
 
 add_llvm_target(LLVMJVMCodeGen
+  JVMAsmPrinter.cpp
   JVMISelLowering.cpp
   JVMInstructionSelector.cpp
   JVMTargetMachine.cpp
 
   LINK_COMPONENTS
   Analysis
+  AsmPrinter
   CodeGen
   CodeGenTypes
   Core
