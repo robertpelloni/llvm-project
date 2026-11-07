@@ -3,6 +3,16 @@
 All notable changes to this project are documented in this file.
 The version format corresponds to `VERSION.md`.
 
+## [0.1.0-alpha.4] - 2026-06-22
+
+### Added
+- Expanded TableGen instruction definitions in `llvm/lib/Target/JVM/JVMInstrInfo.td`:
+  - 64-bit integer arithmetic: `LADD`, `LSUB`, `LMUL`, `LDIV`, `LLOAD`, `LSTORE`, `LRETURN`.
+  - Floating point arithmetic: `FADD`, `FSUB`, `FMUL`, `FDIV`, `DADD`, `DSUB`, `DMUL`, `DDIV`.
+  - Bitwise operations and shifts: `IAND`, `IOR`, `IXOR`, `ISHL`, `ISHR`, `IUSHR`.
+  - Type conversions: `I2L`, `L2I`.
+  - Invocations: `INVOKESTATIC`, `INVOKEVIRTUAL`.
+
 ## [0.1.0-alpha.3] - 2026-06-22
 
 ### Added
