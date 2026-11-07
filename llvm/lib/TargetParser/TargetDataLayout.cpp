@@ -644,6 +644,8 @@ std::string Triple::computeDataLayout(StringRef ABIName) const {
     return computeSPIRVDataLayout(*this);
   case Triple::lanai:
     return computeLanaiDataLayout();
+  case Triple::jvm:
+    return "e-m:e-p:32:32-i64:64-n32:64-S128";
   case Triple::wasm32:
   case Triple::wasm64:
     return computeWebAssemblyDataLayout(*this);

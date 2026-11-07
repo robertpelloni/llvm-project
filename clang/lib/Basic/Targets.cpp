@@ -35,6 +35,7 @@
 #include "Targets/Sparc.h"
 #include "Targets/SystemZ.h"
 #include "Targets/TCE.h"
+#include "Targets/JVM.h"
 #include "Targets/VE.h"
 #include "Targets/WebAssembly.h"
 #include "Targets/X86.h"
@@ -730,6 +731,8 @@ std::unique_ptr<TargetInfo> AllocateTarget(const llvm::Triple &Triple,
       return std::make_unique<SPIRV64IntelTargetInfo>(Triple, Opts);
     return std::make_unique<SPIRV64TargetInfo>(Triple, Opts);
   }
+  case llvm::Triple::jvm:
+    return std::make_unique<JVMTargetInfo>(Triple, Opts);
   case llvm::Triple::wasm32:
     if (Triple.getSubArch() != llvm::Triple::NoSubArch ||
         Triple.getVendor() != llvm::Triple::UnknownVendor ||
